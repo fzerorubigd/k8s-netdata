@@ -14,8 +14,8 @@ func routes(ctx context.Context, change <-chan sets.String) {
 		case <-ctx.Done():
 			return
 		case rec := <-change:
-			for i := range rec {
-				fmt.Println(i, "=>", rec[i])
+			for k, i := range rec.List() {
+				fmt.Println(k, "=>", i)
 			}
 		}
 	}
