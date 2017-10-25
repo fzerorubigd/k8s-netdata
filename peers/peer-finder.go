@@ -111,10 +111,10 @@ func Find(ctx context.Context, ns, domain, svc string, onChange chan<- sets.Stri
 				log.Printf("%v", err)
 				continue
 			}
-			if newPeers.Equal(peers) || !newPeers.Has(myName) {
-				log.Printf("Have not found myself in list yet.\nMy Hostname: %s\nHosts in list: %s", myName, strings.Join(newPeers.List(), ", "))
-				continue
-			}
+			//if newPeers.Equal(peers) || !newPeers.Has(myName) {
+			//	log.Printf("Have not found myself in list yet.\nMy Hostname: %s\nHosts in list: %s", myName, strings.Join(newPeers.List(), ", "))
+			//	continue
+			//}
 			log.Printf("Peer list updated\nwas %v\nnow %v", peers.List(), newPeers.List())
 
 			onChange <- newPeers
