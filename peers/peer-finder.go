@@ -51,10 +51,10 @@ func Find(ctx context.Context, ns, domain, svc string, onChange chan<- sets.Stri
 	if ns == "" {
 		ns = os.Getenv("POD_NAMESPACE")
 	}
-	hostname, err := os.Hostname()
-	if err != nil {
-		log.Fatalf("Failed to get hostname: %s", err)
-	}
+	//hostname, err := os.Hostname()
+	//if err != nil {
+	//	log.Fatalf("Failed to get hostname: %s", err)
+	//}
 	var domainName string
 
 	// If domain is not provided, try to get it from resolv.conf
@@ -101,7 +101,8 @@ func Find(ctx context.Context, ns, domain, svc string, onChange chan<- sets.Stri
 		log.Fatalf("Incomplete args, require -on-change and/or -on-start, -service and -ns or an env var for POD_NAMESPACE.")
 	}
 
-	myName := strings.Join([]string{hostname, svc, domainName}, ".")
+	//myName := strings.Join([]string{hostname, svc, domainName}, ".")
+	var err error
 	newPeers, peers := sets.NewString(), sets.NewString()
 	for {
 		select {
